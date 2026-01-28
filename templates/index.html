@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Weather App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Google Font (optional) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Your CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/in.css') }}">
+</head>
+<body>
+    <!-- Animated sky background -->
+    <div class="sky">
+        <div class="sun"></div>
+
+        <div class="cloud cloud-1"></div>
+        <div class="cloud cloud-2"></div>
+        <div class="cloud cloud-3"></div>
+
+        <div class="rain"></div>
+
+        <div class="rainbow"></div>
+    </div>
+
+    <!-- Foreground content -->
+    <div class="page-wrapper">
+        <div class="weather-card">
+            <div class="header">
+                <div class="icon-circle">
+                    <span class="icon">☀</span>
+                </div>
+                <h1 class="title">Weather Now</h1>
+                <p class="subtitle">Get live weather for any city</p>
+            </div>
+
+            <form method="post" class="search-form">
+                <input type="text"
+                       name="city"
+                       placeholder="Enter city name (e.g. Delhi)"
+                       required>
+                <button type="submit">Search</button>
+            </form>
+
+            {% if error %}
+                <div class="alert alert-error">
+                    {{ error }}
+                </div>
+            {% endif %}
+
+            {% if info %}
+                <div class="result fade-in">
+                    <div class="result-main">
+                        <div class="city-block">
+                            <h2>{{ info.city }}, {{ info.country }}</h2>
+                            <p class="local-time">Local time: {{ info.time }}</p>
+                        </div>
+                        <div class="temp-block">
+                            <span class="temp-value">{{ info.temp }}°C</span>
+                            <span class="temp-condition">{{ info.condition }}</span>
+                        </div>
+                    </div>
+
+                    <div class="result-extra">
+                        <div class="info-item">
+                            <span class="label">Humidity</span>
+                            <span class="value">{{ info.humidity }}%</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Wind Speed</span>
+                            <span class="value">{{ info.wind_kph }} km/h</span>
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+                <div class="placeholder">
+                    <p>Type a city name and press <strong>Search</strong> to see the current weather.</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

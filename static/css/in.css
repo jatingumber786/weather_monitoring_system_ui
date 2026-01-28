@@ -1,0 +1,229 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    font-family: "Poppins", sans-serif;
+    background: #b3e5fc; /* fallback */
+    overflow: hidden;
+}
+
+/* --- Beautiful Sky Background --- */
+.sky {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(180deg, #aee1ff 0%, #c8f0ff 50%, #e9faff 100%);
+    z-index: 0;
+    overflow: hidden;
+}
+
+/* Soft, Glowing Sun */
+.sun {
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 40% 40%, #fff8cc 20%, #ffe066 60%, #ffcc33 100%);
+    top: 10%;
+    left: 10%;
+    box-shadow: 0 0 60px rgba(255, 215, 0, 0.6);
+    animation: soft-glow 6s ease-in-out infinite alternate;
+}
+
+@keyframes soft-glow {
+    0% { filter: brightness(1); }
+    100% { filter: brightness(1.25); }
+}
+
+/* --- Soft Clouds --- */
+.cloud {
+    position: absolute;
+    background: #ffffff;
+    border-radius: 50px;
+    opacity: 0.85;
+    filter: blur(1px);
+}
+
+/* Cloud shape (smooth circles) */
+.cloud:before,
+.cloud:after {
+    content: "";
+    position: absolute;
+    background: #ffffff;
+    width: 60%;
+    height: 60%;
+    border-radius: 50%;
+}
+
+.cloud:before {
+    top: -15px;
+    left: 10px;
+}
+
+.cloud:after {
+    top: -10px;
+    right: 15px;
+}
+
+/* Individual cloud sizes and animations */
+.cloud-1 {
+    width: 140px;
+    height: 55px;
+    top: 20%;
+    left: -200px;
+    animation: cloud-move 38s linear infinite;
+}
+
+.cloud-2 {
+    width: 180px;
+    height: 65px;
+    top: 35%;
+    left: -250px;
+    animation: cloud-move 50s linear infinite;
+}
+
+.cloud-3 {
+    width: 120px;
+    height: 50px;
+    top: 15%;
+    left: -180px;
+    animation: cloud-move 45s linear infinite;
+}
+
+@keyframes cloud-move {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(150vw); }
+}
+
+/* --- Optional Soft Rainbow --- */
+.rainbow {
+    position: absolute;
+    bottom: -60%;
+    left: 50%;
+    width: 180%;
+    height: 180%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    background: conic-gradient(
+        from 180deg,
+        red, orange, yellow, green, cyan, blue, violet, red
+    );
+    opacity: 0.15;
+    filter: blur(4px);
+}
+
+/* --- Foreground Weather Card --- */
+.page-wrapper {
+    position: relative;
+    z-index: 10;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.weather-card {
+    width: 100%;
+    max-width: 420px;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 16px;
+    padding: 24px;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.15);
+}
+
+/* Header */
+.header {
+    text-align: center;
+    margin-bottom: 18px;
+}
+
+.icon-circle {
+    width: 66px;
+    height: 66px;
+    border-radius: 50%;
+    margin: 0 auto 10px;
+    background: #ffe066;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(255, 204, 0, 0.4);
+}
+
+.icon {
+    font-size: 32px;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #0f172a;
+}
+
+.subtitle {
+    font-size: 13px;
+    color: #6b7280;
+}
+
+/* Form */
+.search-form {
+    display: flex;
+    gap: 8px;
+    margin-top: 14px;
+    margin-bottom: 10px;
+}
+
+.search-form input[type="text"] {
+    flex: 1;
+    padding: 10px 12px;
+    border-radius: 999px;
+    border: 1px solid #d0e7ff;
+    background: #ffffff;
+    font-size: 14px;
+}
+
+.search-form button {
+    padding: 10px 16px;
+    border-radius: 999px;
+    border: none;
+    background: #4dabf7;
+    color: #ffffff;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.search-form button:hover {
+    background: #339af0;
+}
+
+/* Error message */
+.alert-error {
+    padding: 8px;
+    border-radius: 8px;
+    background: #ffe6e6;
+    color: #c92a2a;
+    border: 1px solid #ffcccc;
+    margin-bottom: 8px;
+}
+
+/* Weather Result */
+.result {
+    background: #f1f8ff;
+    padding: 14px;
+    border-radius: 12px;
+}
+
+.city-block h2 {
+    font-size: 20px;
+}
+
+.temp-value {
+    font-size: 32px;
+    font-weight: 600;
+    color: #1d4ed8;
+}
